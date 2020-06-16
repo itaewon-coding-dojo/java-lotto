@@ -12,6 +12,9 @@ public class DecifererTest {
 
     @Test
     public void extractElements() {
-        assertThat(deciferer.extractElements("3:3:3")).isEqualTo(new String[] {"3","3","3"});
+        assertThat(deciferer.extractElements("3;3;3")).isEqualTo(new String[] {"3","3","3"});
+        assertThat(deciferer.extractElements("3,3;3")).isEqualTo(new String[] {"3","3","3"});
+        assertThat(deciferer.extractElements("//a\\n3a3a3")).isEqualTo(new String[] {"3","3","3"});
+        assertThat(deciferer.extractElements("3,3;3")).isEqualTo(new String[] {"3","3","3"});
     }
 }
