@@ -10,6 +10,8 @@ public class StringCalculatorApp {
         Result.showStartMessage();
         String userInput = Input.getUserInput();
 
+        System.out.println(userInput);
+
         StringReader stringReader = new StringReader();
         int[] arr = stringReader.read(userInput);
 
