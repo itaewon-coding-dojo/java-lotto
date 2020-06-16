@@ -3,16 +3,17 @@ package calculator.controller;
 import calculator.model.Calculator;
 import calculator.model.StringReader;
 import calculator.view.Input;
+import calculator.view.Result;
 
 public class StringCalculatorApp {
     public static void main(String[] args) {
-        System.out.println("수식을 입력해주세요");
+        Result.showStartMessage();
         String userInput = Input.getUserInput();
 
         StringReader stringReader = new StringReader();
         int[] arr = stringReader.read(userInput);
 
         Calculator calculator = new Calculator(arr);
-        System.out.println(calculator.executeAddition());
+        Result.showResult(calculator.executeAddition());
     }
 }
