@@ -7,15 +7,21 @@ public class StringReader {
     public int[] read(String str) {
         String[] arr = str.split("n");
 
-        if (arr.length == 1) {
-            String[] numbers = arr[0].split("[:,]");
+        return arr.length == 1
+                ? withNoCustomSeparator(arr[0])
+                : withCustomSeparator(arr[0], arr[1]);
+    }
 
-            return Arrays.stream(numbers).mapToInt(Integer::parseInt).toArray();
-        }
+    private int[] withNoCustomSeparator(String str) {
+        String[] numbers = str.split("[:,]");
 
-        String customSeparator = Character.toString(arr[0].charAt(2));
+        return Arrays.stream(numbers).mapToInt(Integer::parseInt).toArray();
+    }
+
+    private int[] withCustomSeparator(String separatorPart, String numberPart) {
+        String customSeparator = Character.toString(separatorPart.charAt(2));
         String regex = "[:," + customSeparator + "]";
-        String[] numbers = arr[1].split(regex);
+        String[] numbers = numberPart.split(regex);
 
         return Arrays.stream(numbers).mapToInt(Integer::parseInt).toArray();
     }
