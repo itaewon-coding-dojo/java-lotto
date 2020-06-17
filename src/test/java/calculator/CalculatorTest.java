@@ -12,21 +12,30 @@ public class CalculatorTest {
     @DisplayName("with zero parameter")
     public void nullParameter() {
         Calculator calculator = Calculator.newCalculator(new int[] { 0 });
-        assertThat(calculator.executeAddition()).isEqualTo(0);
+
+        int answer = calculator.executeAddition();
+
+        assertThat(answer).isEqualTo(0);
     }
 
     @Test
     @DisplayName("with only one number parameter")
     public void oneParameter() {
         Calculator calculator = Calculator.newCalculator(new int[] { 3 });
-        assertThat(calculator.executeAddition()).isEqualTo(3);
+
+        int answer = calculator.executeAddition();
+
+        assertThat(answer).isEqualTo(3);
     }
 
     @Test
     @DisplayName("with array parameter")
     public void arrayParameter() {
         Calculator calculator = Calculator.newCalculator(new int[] { 1, 2, 3, 4 });
-        assertThat(calculator.executeAddition()).isEqualTo(10);
+
+        int answer = calculator.executeAddition();
+
+        assertThat(answer).isEqualTo(10);
     }
 
     @Test
