@@ -3,7 +3,6 @@ package calculator.model;
 import java.util.Arrays;
 
 public class StringReader {
-
     public int[] read(String str) {
         String[] arr = str.split("n");
 

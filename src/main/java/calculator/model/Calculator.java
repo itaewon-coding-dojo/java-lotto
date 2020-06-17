@@ -14,6 +14,10 @@ public class Calculator {
         this.result = Arrays.stream(numbers).reduce(Integer::sum).orElse(0);
     }
 
+    public static Calculator newCalculator(int[] numbers) {
+        return new Calculator(numbers);
+    }
+
     public int executeAddition() {
         return this.result;
     }
