@@ -3,5 +3,6 @@ public class CalculatorApp {
         String input = InputView.getInputs();
         String[] inputs = Deciferer.extractElements(input);
         int sum = Calculator.getSum(inputs);
+        OutputView.sumResult(sum);
     }
 }
