@@ -8,7 +8,7 @@ public class Input {
         Scanner scanner = new Scanner(System.in);
 
         int money = scanner.nextInt();
-        System.out.printf("%d개를 구매하셨습니다.", money / 1000);
+        System.out.printf("%d개를 구매하셨습니다.\n", money / 1000);
 
         return money;
     }
