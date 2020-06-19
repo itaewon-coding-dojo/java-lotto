@@ -21,6 +21,12 @@ public class LottoMachine {
 
     public void makeLottoTicket(List<Integer> numbers) {
         LottoTicket newTicket = LottoTicket.newLotto(numbers);
-        lottoTickets.add(newTicket);
+        this.lottoTickets.add(newTicket);
+    }
+
+    public void makeTicketsWithMoney(int money) {
+        for (int i = 0; i < money / 1000; i += 1) {
+            this.makeLottoTicket(List.of(1, 2, 3, 4, 5, 6));
+        }
     }
 }

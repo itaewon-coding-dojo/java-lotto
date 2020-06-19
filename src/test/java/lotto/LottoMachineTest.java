@@ -24,4 +24,13 @@ public class LottoMachineTest {
         LottoTicket secondTicket = lottoMachine.getLottoTickets().get(1);
         assertThat(secondTicket.getLottoNumbers()).isEqualTo(numbers2);
     }
+
+    @Test
+    void makeLottoTicketsWithMoney() {
+        int money = 14_000;
+        LottoMachine lottoMachine = LottoMachine.newMachine();
+        lottoMachine.makeTicketsWithMoney(money);
+
+        assertThat(lottoMachine.getLottoTickets()).hasSize(14);
+    }
 }
