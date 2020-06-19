@@ -21,7 +21,6 @@ public class Output {
         System.out.printf("모두 일치 (2,000,000,000원) - %d개\n", counter.getOrDefault(6, 0));
         System.out.println("");
 
-
-        System.out.printf("총 수익률은 %.2f입니다.");
+        System.out.printf("총 수익률은 %.2f입니다.\n\n\n", (double) counter.get(7) / money);
     }
 }

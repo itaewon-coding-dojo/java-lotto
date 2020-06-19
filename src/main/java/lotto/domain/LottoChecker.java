@@ -66,7 +66,8 @@ public class LottoChecker {
     }
 
     private void addTotalWinningMoney() {
-        int totalWinningMoney = (5_000 * this.checkCounter.getOrDefault(3, 0))
+        int totalWinningMoney =
+                (5_000 * this.checkCounter.getOrDefault(3, 0))
                 + (50_000 * this.checkCounter.getOrDefault(4, 0))
                 + (1_500_000 * this.checkCounter.getOrDefault(5, 0))
                 + (2_000_000_000 * this.checkCounter.getOrDefault(6, 0));
