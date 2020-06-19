@@ -12,5 +12,8 @@ public class LottoApplication {
         lottoMachine.makeTicketsWithMoney(money);
 
         Output.showLottoTickets(lottoMachine.getTickets());
+
+        String winning = Input.getWinningNumbers();
+
     }
 }
