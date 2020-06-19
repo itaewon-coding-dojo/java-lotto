@@ -15,13 +15,13 @@ public class LottoMachineTest {
         LottoMachine lottoMachine = LottoMachine.newMachine();
         List<Integer> numbers1 = new ArrayList<>(List.of(1, 3, 5, 7, 9, 11));
         List<Integer> numbers2 = new ArrayList<>(List.of(2, 4, 6, 8, 10, 12));
-        lottoMachine.makeLottoTicket(numbers1);
-        lottoMachine.makeLottoTicket(numbers2);
+        lottoMachine.makeTicket(numbers1);
+        lottoMachine.makeTicket(numbers2);
 
-        LottoTicket firstTicket = lottoMachine.getLottoTickets().get(0);
+        LottoTicket firstTicket = lottoMachine.getTickets().get(0);
         assertThat(firstTicket.getLottoNumbers()).isEqualTo(numbers1);
 
-        LottoTicket secondTicket = lottoMachine.getLottoTickets().get(1);
+        LottoTicket secondTicket = lottoMachine.getTickets().get(1);
         assertThat(secondTicket.getLottoNumbers()).isEqualTo(numbers2);
     }
 
@@ -31,6 +31,6 @@ public class LottoMachineTest {
         LottoMachine lottoMachine = LottoMachine.newMachine();
         lottoMachine.makeTicketsWithMoney(money);
 
-        assertThat(lottoMachine.getLottoTickets()).hasSize(14);
+        assertThat(lottoMachine.getTickets()).hasSize(14);
     }
 }
