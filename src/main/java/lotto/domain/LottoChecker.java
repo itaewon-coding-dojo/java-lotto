@@ -16,7 +16,7 @@ public class LottoChecker {
         return new LottoChecker(winnings);
     }
 
-    public int checkTicket(LottoTicket ticket) {
+    public int countMatchedNumber(LottoTicket ticket) {
         List<Integer> ticketNumbers = ticket.getLottoNumbers();
 
         int count = 0;
@@ -38,13 +38,13 @@ public class LottoChecker {
     public CheckCounter checkAllTickets(LottoMachine lottoMachine) {
         List<LottoTicket> tickets = lottoMachine.getTickets();
         for (LottoTicket ticket : tickets) {
-            addCheckCounter(this.checkTicket(ticket));
+            addToCheckCounter(this.countMatchedNumber(ticket));
         }
 
         return this.checkCounter;
     }
 
-    private void addCheckCounter(int matchCount) {
+    private void addToCheckCounter(int matchCount) {
         if (this.checkCounter.has(matchCount)) {
             this.checkCounter.countUp(matchCount);
             return;
