@@ -16,7 +16,9 @@ public class LottoApplication {
         Output.showLottoTickets(lottoMachine);
 
         String winningNumbers = Input.getWinningNumbers();
-        LottoChecker lottoChecker = LottoChecker.newChecker(winningNumbers);
+        int bonusBallNumber = Input.getBonusBallNumber();
+
+        LottoChecker lottoChecker = LottoChecker.newChecker(winningNumbers, bonusBallNumber);
         CheckCounter counter = lottoChecker.checkAllTickets(lottoMachine);
 
         Output.showResult(counter, money);

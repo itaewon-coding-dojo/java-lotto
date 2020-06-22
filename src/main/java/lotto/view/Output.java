@@ -23,7 +23,7 @@ public class Output {
         SECOND {
             @Override
             public void showCount(CheckCounter counter) {
-                System.out.printf("5개 일치, 보너스 볼 일치(30_000_000원) - 0개");
+                System.out.printf("5개 일치, 보너스 볼 일치(30_000_000원) - %d개\n", counter.get(7));
             }
         },
         THIRD {

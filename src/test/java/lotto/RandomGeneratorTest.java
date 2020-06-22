@@ -14,6 +14,6 @@ public class RandomGeneratorTest {
 
         List<Integer> numbers = randomGenerator.getNumbers();
 
-        assertThat(numbers).hasSize(6);
+        assertThat(numbers).hasSize(7);
     }
 }

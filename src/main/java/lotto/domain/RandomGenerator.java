@@ -21,9 +21,9 @@ public class RandomGenerator {
 
     public List<Integer> getNumbers() {
         Collections.shuffle(numbers);
-        List<Integer> sixNumbers = numbers.subList(0, 6);
-        Collections.sort(sixNumbers);
+        List<Integer> sevenNumbers = numbers.subList(0, 7);
+        Collections.sort(sevenNumbers);
 
-        return sixNumbers;
+        return sevenNumbers;
     }
 }

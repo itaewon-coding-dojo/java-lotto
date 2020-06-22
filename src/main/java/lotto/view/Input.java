@@ -19,4 +19,11 @@ public class Input {
 
         return scanner.nextLine();
     }
+
+    public static int getBonusBallNumber() {
+        System.out.println("보너스 볼을 입력해주세요.");
+        Scanner scanner = new Scanner(System.in);
+
+        return scanner.nextInt();
+    }
 }

@@ -13,8 +13,8 @@ public class LottoMachineTest {
     @Test
     void makeLottoTicket() {
         LottoMachine lottoMachine = LottoMachine.newMachine();
-        List<Integer> numbers1 = new ArrayList<>(List.of(1, 3, 5, 7, 9, 11));
-        List<Integer> numbers2 = new ArrayList<>(List.of(2, 4, 6, 8, 10, 12));
+        List<Integer> numbers1 = new ArrayList<>(List.of(1, 3, 5, 7, 9, 11, 13));
+        List<Integer> numbers2 = new ArrayList<>(List.of(2, 4, 6, 8, 10, 12, 14));
         lottoMachine.makeTicket(numbers1);
         lottoMachine.makeTicket(numbers2);
 

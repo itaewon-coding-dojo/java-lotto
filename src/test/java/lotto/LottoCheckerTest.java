@@ -18,10 +18,11 @@ public class LottoCheckerTest {
     @Test
     void checkTicket() {
         String winningNumbers = "1,2,3,4,5,6";
-        LottoChecker lottoChecker = LottoChecker.newChecker(winningNumbers);
+        int bonusBall = 7;
+        LottoChecker lottoChecker = LottoChecker.newChecker(winningNumbers, bonusBall);
         LottoTicket ticket = LottoTicket.newLotto(List.of(1, 2, 3, 4, 11, 12));
 
-        int count = lottoChecker.checkTicket(ticket);
+        int count = lottoChecker.countMatchedNumber(ticket);
 
         assertThat(count).isEqualTo(4);
     }
@@ -32,12 +33,14 @@ public class LottoCheckerTest {
     @BeforeEach
     void init() {
         lottoMachine = LottoMachine.newMachine();
-        lottoMachine.makeTicket(List.of(1, 2, 3, 11, 12, 13));
-        lottoMachine.makeTicket(List.of(1, 2, 11, 12, 13, 14));
-        lottoMachine.makeTicket(List.of(11, 12, 13, 14, 15, 16));
+        lottoMachine.makeTicket(List.of(1, 2, 3, 11, 12, 13, 14));
+        lottoMachine.makeTicket(List.of(1, 2, 11, 12, 13, 14, 15));
+        lottoMachine.makeTicket(List.of(11, 12, 13, 14, 15, 16, 17));
+        lottoMachine.makeTicket(List.of(1, 2, 3, 4, 5, 7, 16));
 
         String winningNumbers = "1,2,3,4,5,6";
-        lottoChecker = LottoChecker.newChecker(winningNumbers);
+        int bonusBall = 7;
+        lottoChecker = LottoChecker.newChecker(winningNumbers, bonusBall);
     }
 
     @ParameterizedTest
@@ -48,6 +51,7 @@ public class LottoCheckerTest {
             "4,0",
             "5,0",
             "6,0",
+            "7,1",
     })
     void checkAllTickets(Integer key, Integer value) {
         CheckCounter checkCounter = lottoChecker.checkAllTickets(lottoMachine);

@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class LottoTicketTest {
     @Test
     void getLottoNumbers() {
-        List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
+        List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7));
 
         LottoTicket lottoTicket = LottoTicket.newLotto(numbers);
 
