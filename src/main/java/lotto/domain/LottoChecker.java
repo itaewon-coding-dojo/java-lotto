@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.lang.reflect.WildcardType;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
