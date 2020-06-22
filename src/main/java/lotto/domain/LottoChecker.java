@@ -20,14 +20,14 @@ public class LottoChecker {
         List<Integer> ticketNumbers = ticket.getLottoNumbers();
 
         int count = 0;
-        for (Integer number : winningNumbers) {
-            count = getCount(ticketNumbers, count, number);
+        for (Integer number : this.winningNumbers) {
+            count = plusCount(ticketNumbers, count, number);
         }
 
         return count;
     }
 
-    private int getCount(List<Integer> ticketNumbers, int count, Integer number) {
+    private int plusCount(List<Integer> ticketNumbers, int count, Integer number) {
         if (ticketNumbers.contains(number)) {
             count += 1;
         }
