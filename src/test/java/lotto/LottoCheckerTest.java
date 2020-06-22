@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.CheckCounter;
 import lotto.domain.LottoChecker;
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoTicket;
@@ -47,12 +48,11 @@ public class LottoCheckerTest {
             "4,0",
             "5,0",
             "6,0",
-            "7,5000"
     })
     void checkAllTickets(Integer key, Integer value) {
         List<LottoTicket> tickets = lottoMachine.getTickets();
-        Map<Integer, Integer> checkCounter = lottoChecker.checkAllTickets(tickets);
+        CheckCounter checkCounter = lottoChecker.checkAllTickets(tickets);
 
-        assertThat(checkCounter.getOrDefault(key, 0)).isEqualTo(value);
+        assertThat(checkCounter.get(key)).isEqualTo(value);
     }
 }

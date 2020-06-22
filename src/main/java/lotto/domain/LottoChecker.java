@@ -2,16 +2,13 @@ package lotto.domain;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 public class LottoChecker {
 
-    private final Map<Integer, Integer> checkCounter;
+    private final CheckCounter checkCounter = new CheckCounter();
     private final List<Integer> winningNumbers;
 
     public LottoChecker(String winnings) {
-        this.checkCounter = new TreeMap<>();
         this.winningNumbers =
                 Arrays.asList(
                     Arrays.stream(winnings.split(","))
@@ -44,33 +41,20 @@ public class LottoChecker {
         return count;
     }
 
-    public Map<Integer, Integer> checkAllTickets(List<LottoTicket> tickets) {
+    public CheckCounter checkAllTickets(List<LottoTicket> tickets) {
         for (LottoTicket ticket : tickets) {
             addCheckCounter(this.checkTicket(ticket));
         }
 
-        addTotalWinningMoney();
-
         return this.checkCounter;
     }
 
-    private void addCheckCounter(int count) {
-        if (this.checkCounter.containsKey(count)) {
-            this.checkCounter.put(count, this.checkCounter.get(count) + 1);
-
+    private void addCheckCounter(int matchCount) {
+        if (this.checkCounter.has(matchCount)) {
+            this.checkCounter.countUp(matchCount);
             return;
         }
 
-        this.checkCounter.put(count, 1);
-    }
-
-    private void addTotalWinningMoney() {
-        int totalWinningMoney =
-                (5_000 * this.checkCounter.getOrDefault(3, 0))
-                + (50_000 * this.checkCounter.getOrDefault(4, 0))
-                + (1_500_000 * this.checkCounter.getOrDefault(5, 0))
-                + (2_000_000_000 * this.checkCounter.getOrDefault(6, 0));
-
-        this.checkCounter.put(7, totalWinningMoney);
+        this.checkCounter.setInitial(matchCount);
     }
 }
