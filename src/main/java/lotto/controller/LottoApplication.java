@@ -13,11 +13,11 @@ public class LottoApplication {
         LottoMachine lottoMachine = LottoMachine.newMachine();
         lottoMachine.makeTicketsWithMoney(money);
 
-        Output.showLottoTickets(lottoMachine.getTickets());
+        Output.showLottoTickets(lottoMachine);
 
         String winningNumbers = Input.getWinningNumbers();
         LottoChecker lottoChecker = LottoChecker.newChecker(winningNumbers);
-        CheckCounter counter = lottoChecker.checkAllTickets(lottoMachine.getTickets());
+        CheckCounter counter = lottoChecker.checkAllTickets(lottoMachine);
 
         Output.showResult(counter, money);
     }

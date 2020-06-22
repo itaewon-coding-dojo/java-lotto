@@ -1,14 +1,15 @@
 package lotto.view;
 
 import lotto.domain.CheckCounter;
+import lotto.domain.LottoMachine;
 import lotto.domain.LottoTicket;
 
 import java.util.List;
-import java.util.Map;
 
 public class Output {
-    public static void showLottoTickets(List<LottoTicket> tickets) {
+    public static void showLottoTickets(LottoMachine lottoMachine) {
         System.out.println("");
+        List<LottoTicket> tickets = lottoMachine.getTickets();
         tickets.forEach(ticket -> System.out.println(ticket.getLottoNumbers()));
     }
 

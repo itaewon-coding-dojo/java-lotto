@@ -9,13 +9,7 @@ public class LottoChecker {
     private final List<Integer> winningNumbers;
 
     public LottoChecker(String winnings) {
-        this.winningNumbers =
-                Arrays.asList(
-                    Arrays.stream(winnings.split(","))
-                        .mapToInt(Integer::parseInt)
-                        .boxed()
-                        .toArray(Integer[]::new)
-                );
+        this.winningNumbers = convertToList(winnings);
     }
 
     public static LottoChecker newChecker(String winnings) {
@@ -41,7 +35,8 @@ public class LottoChecker {
         return count;
     }
 
-    public CheckCounter checkAllTickets(List<LottoTicket> tickets) {
+    public CheckCounter checkAllTickets(LottoMachine lottoMachine) {
+        List<LottoTicket> tickets = lottoMachine.getTickets();
         for (LottoTicket ticket : tickets) {
             addCheckCounter(this.checkTicket(ticket));
         }
@@ -56,5 +51,14 @@ public class LottoChecker {
         }
 
         this.checkCounter.setInitial(matchCount);
+    }
+
+    private List<Integer> convertToList(String string) {
+        return Arrays.asList(
+                Arrays.stream(string.split(","))
+                        .mapToInt(Integer::parseInt)
+                        .boxed()
+                        .toArray(Integer[]::new)
+        );
     }
 }

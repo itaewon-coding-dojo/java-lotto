@@ -5,11 +5,9 @@ import java.util.List;
 
 public class LottoMachine {
 
-    private final List<LottoTicket> lottoTickets;
+    private final List<LottoTicket> lottoTickets = new ArrayList<>();
 
-    public LottoMachine() {
-        lottoTickets = new ArrayList<>();
-    }
+    public LottoMachine() {}
 
     public static LottoMachine newMachine() {
         return new LottoMachine();

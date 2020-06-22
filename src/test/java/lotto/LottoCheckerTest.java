@@ -50,8 +50,7 @@ public class LottoCheckerTest {
             "6,0",
     })
     void checkAllTickets(Integer key, Integer value) {
-        List<LottoTicket> tickets = lottoMachine.getTickets();
-        CheckCounter checkCounter = lottoChecker.checkAllTickets(tickets);
+        CheckCounter checkCounter = lottoChecker.checkAllTickets(lottoMachine);
 
         assertThat(checkCounter.get(key)).isEqualTo(value);
     }
