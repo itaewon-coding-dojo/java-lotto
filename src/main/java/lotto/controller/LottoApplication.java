@@ -3,12 +3,13 @@ package lotto.controller;
 import lotto.domain.CheckCounter;
 import lotto.domain.LottoChecker;
 import lotto.domain.LottoMachine;
+import lotto.domain.Money;
 import lotto.view.Input;
 import lotto.view.Output;
 
 public class LottoApplication {
     public static void main(String[] args) {
-        int money = Input.getUserInputMoney();
+        Money money = Money.newMoney(Input.getUserInputMoney());
 
         LottoMachine lottoMachine = LottoMachine.newMachine();
         lottoMachine.makeTicketsWithMoney(money);

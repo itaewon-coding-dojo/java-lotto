@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoTicket;
+import lotto.domain.Money;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class LottoMachineTest {
 
     @Test
     void makeLottoTicketsWithMoney() {
-        int money = 14_000;
+        Money money = Money.newMoney(14_000);
         LottoMachine lottoMachine = LottoMachine.newMachine();
         lottoMachine.makeTicketsWithMoney(money);
 

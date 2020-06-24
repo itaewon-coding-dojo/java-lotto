@@ -3,6 +3,7 @@ package lotto.view;
 import lotto.domain.CheckCounter;
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoTicket;
+import lotto.domain.Money;
 
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class Output {
         abstract public void showCount(CheckCounter counter);
     }
 
-    public static void showResult(CheckCounter counter, int money) {
+    public static void showResult(CheckCounter counter, Money money) {
         System.out.println("");
         System.out.println("당첨 통계");
         System.out.println("----------------------------");
@@ -59,6 +60,6 @@ public class Output {
         ShowWinner.FIRST.showCount(counter);
         System.out.println("");
 
-        System.out.printf("총 수익률은 %.2f입니다.\n\n\n", (double) counter.getTotalWinningMoney() / money);
+        System.out.printf("총 수익률은 %.2f입니다.\n\n\n", (double) counter.getTotalWinningMoney() / money.get());
     }
 }
