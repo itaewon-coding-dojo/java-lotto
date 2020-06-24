@@ -1,9 +1,6 @@
 package lotto.controller;
 
-import lotto.domain.CheckCounter;
-import lotto.domain.LottoChecker;
-import lotto.domain.LottoMachine;
-import lotto.domain.Money;
+import lotto.domain.*;
 import lotto.view.Input;
 import lotto.view.Output;
 
@@ -17,9 +14,9 @@ public class LottoApplication {
         Output.showLottoTickets(lottoMachine);
 
         String winningNumbers = Input.getWinningNumbers();
-        int bonusBallNumber = Input.getBonusBallNumber();
+        LottoBall lottoBallNumber = LottoBall.newLottoBall(Input.getBonusBallNumber());
 
-        LottoChecker lottoChecker = LottoChecker.newChecker(winningNumbers, bonusBallNumber);
+        LottoChecker lottoChecker = LottoChecker.newChecker(winningNumbers, lottoBallNumber);
         CheckCounter counter = lottoChecker.checkAllTickets(lottoMachine);
 
         Output.showResult(counter, money);

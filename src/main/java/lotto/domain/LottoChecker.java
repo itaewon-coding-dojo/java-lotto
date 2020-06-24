@@ -7,15 +7,15 @@ public class LottoChecker {
 
     private final CheckCounter checkCounter = new CheckCounter();
     private final List<Integer> winningNumbers;
-    private final int bonusBall;
+    private final LottoBall lottoBall;
 
-    public LottoChecker(String winnings, int bonusBall) {
+    public LottoChecker(String winnings, LottoBall lottoBall) {
         this.winningNumbers = convertToList(winnings);
-        this.bonusBall = bonusBall;
+        this.lottoBall = lottoBall;
     }
 
-    public static LottoChecker newChecker(String winnings, int bonusBall) {
-        return new LottoChecker(winnings, bonusBall);
+    public static LottoChecker newChecker(String winnings, LottoBall lottoBall) {
+        return new LottoChecker(winnings, lottoBall);
     }
 
     public int countMatchedNumber(LottoTicket ticket) {
@@ -78,6 +78,6 @@ public class LottoChecker {
     }
 
     private boolean isContainingBonusBall(LottoTicket ticket) {
-        return ticket.getLottoNumbers().contains(this.bonusBall);
+        return ticket.getLottoNumbers().contains(this.lottoBall.get());
     }
 }

@@ -1,16 +1,12 @@
 package lotto;
 
-import lotto.domain.CheckCounter;
-import lotto.domain.LottoChecker;
-import lotto.domain.LottoMachine;
-import lotto.domain.LottoTicket;
+import lotto.domain.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,8 +14,8 @@ public class LottoCheckerTest {
     @Test
     void checkTicket() {
         String winningNumbers = "1,2,3,4,5,6";
-        int bonusBall = 7;
-        LottoChecker lottoChecker = LottoChecker.newChecker(winningNumbers, bonusBall);
+        LottoBall lottoBall = LottoBall.newLottoBall(7);
+        LottoChecker lottoChecker = LottoChecker.newChecker(winningNumbers, lottoBall);
         LottoTicket ticket = LottoTicket.newLotto(List.of(1, 2, 3, 4, 11, 12));
 
         int count = lottoChecker.countMatchedNumber(ticket);
@@ -39,8 +35,8 @@ public class LottoCheckerTest {
         lottoMachine.makeTicket(List.of(1, 2, 3, 4, 5, 7, 16));
 
         String winningNumbers = "1,2,3,4,5,6";
-        int bonusBall = 7;
-        lottoChecker = LottoChecker.newChecker(winningNumbers, bonusBall);
+        LottoBall lottoBall = LottoBall.newLottoBall(7);
+        lottoChecker = LottoChecker.newChecker(winningNumbers, lottoBall);
     }
 
     @ParameterizedTest
