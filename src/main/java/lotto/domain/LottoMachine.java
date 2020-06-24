@@ -24,7 +24,7 @@ public class LottoMachine {
 
     public void makeTickets(Money money, List<LottoTicket> manualTickets) {
         int manualLottoCount = manualTickets.size();
-        int autoLottoCount = (money.get() / 1000) - manualLottoCount;
+        int autoLottoCount = money.getAutoLottoCount(manualLottoCount);
 
         makeAutoLottos(autoLottoCount);
         makeManualLottos(manualTickets);

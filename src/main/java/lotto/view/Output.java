@@ -60,7 +60,7 @@ public class Output {
         ShowWinner.FIRST.showCount(counter);
         System.out.println("");
 
-        System.out.printf("총 수익률은 %.2f입니다.\n\n\n", (double) counter.getTotalWinningMoney() / money.get());
+        System.out.printf("총 수익률은 %.2f입니다.\n\n\n", money.getRevenueRate(counter.getTotalWinningMoney()));
     }
 
     public static void showErrorMessage(IllegalArgumentException e) {

@@ -13,13 +13,17 @@ public class Money {
         return new Money(money);
     }
 
-    public int get() {
-        return this.money;
-    }
-
     private void validate(int money) {
         if (money < 1000) {
             throw new IllegalArgumentException("1000원 이상 구매하셔야 합니다.");
         }
+    }
+
+    public int getAutoLottoCount(int manualLottoCount) {
+        return (this.money / 1000) - manualLottoCount;
+    }
+
+    public double getRevenueRate(int totalWinningMoney) {
+        return (double) totalWinningMoney / this.money;
     }
 }
