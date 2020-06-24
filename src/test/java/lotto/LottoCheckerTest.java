@@ -11,25 +11,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class LottoCheckerTest {
-    @Test
-    void checkTicket() {
-        String winningNumbers = "1,2,3,4,5,6";
-        LottoBall lottoBall = LottoBall.newBall(7);
-        LottoChecker lottoChecker = LottoChecker.newChecker(winningNumbers, lottoBall);
-        LottoTicket ticket = LottoTicket.newTicket(List.of(
-                LottoBall.newBall(1),
-                LottoBall.newBall(2),
-                LottoBall.newBall(3),
-                LottoBall.newBall(4),
-                LottoBall.newBall(11),
-                LottoBall.newBall(12)
-        ));
-
-        int count = lottoChecker.countMatchedNumber(ticket);
-
-        assertThat(count).isEqualTo(4);
-    }
-
     LottoMachine lottoMachine;
     LottoChecker lottoChecker;
 

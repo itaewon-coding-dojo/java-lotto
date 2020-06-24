@@ -18,29 +18,10 @@ public class LottoChecker {
         return new LottoChecker(winnings, bonusBall);
     }
 
-    public int countMatchedNumber(LottoTicket ticket) {
-        List<Integer> ticketNumbers = ticket.getLottoNumbers();
-
-        int count = 0;
-        for (Integer number : this.winningNumbers) {
-            count = plusCount(ticketNumbers, count, number);
-        }
-
-        return count;
-    }
-
-    private int plusCount(List<Integer> ticketNumbers, int count, Integer number) {
-        if (ticketNumbers.contains(number)) {
-            count += 1;
-        }
-
-        return count;
-    }
-
     public CheckCounter checkAllTickets(LottoMachine lottoMachine) {
         List<LottoTicket> tickets = lottoMachine.getTickets();
         for (LottoTicket ticket : tickets) {
-            int matchCount = this.countMatchedNumber(ticket);
+            int matchCount = ticket.countMatchedNumber(this.winningNumbers);
             boolean bonusBallMatch = isContainingBonusBall(ticket);
 
             executeCheckCounter(matchCount, bonusBallMatch);
@@ -78,6 +59,6 @@ public class LottoChecker {
     }
 
     private boolean isContainingBonusBall(LottoTicket ticket) {
-        return this.bonusBall.isElementOf(ticket.getLottoNumbers());
+        return ticket.isContaining(this.bonusBall);
     }
 }

@@ -23,4 +23,27 @@ public class LottoTicket {
 
         return numbers;
     }
+
+    public int countMatchedNumber(List<Integer> winningNumbers) {
+        int count = 0;
+        for (Integer number : winningNumbers) {
+            count = plusCount(this.lottoNumbers, count, number);
+        }
+
+        return count;
+    }
+
+    private int plusCount(List<LottoBall> ticketNumbers, int count, Integer number) {
+        for (LottoBall ball : ticketNumbers) {
+            if (ball.isSameWith(number)) {
+                count += 1;
+            }
+        }
+
+        return count;
+    }
+
+    public boolean isContaining(LottoBall ball) {
+        return this.lottoNumbers.contains(ball);
+    }
 }

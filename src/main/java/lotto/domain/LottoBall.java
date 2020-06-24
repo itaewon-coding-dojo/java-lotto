@@ -22,9 +22,15 @@ public class LottoBall implements Comparable{
     }
 
     @Override
-    public int compareTo(Object o) {
-        LottoBall next = (LottoBall) o;
+    public int compareTo(Object obj) {
+        LottoBall next = (LottoBall) obj;
         return this.ballNumber - next.ballNumber;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        LottoBall next = (LottoBall) obj;
+        return this.ballNumber == next.ballNumber;
     }
 
     public boolean isElementOf(List<Integer> numbers) {
@@ -33,5 +39,9 @@ public class LottoBall implements Comparable{
 
     public void beElementOf(List<Integer> numbers) {
         numbers.add(this.ballNumber);
+    }
+
+    public boolean isSameWith(int number) {
+        return number == this.ballNumber;
     }
 }
