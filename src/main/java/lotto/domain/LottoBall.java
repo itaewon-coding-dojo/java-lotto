@@ -1,6 +1,6 @@
 package lotto.domain;
 
-public class LottoBall {
+public class LottoBall implements Comparable{
 
     private final int ballNumber;
 
@@ -21,5 +21,11 @@ public class LottoBall {
         if (number < 1 || number > 45) {
             throw new IllegalArgumentException("보너스 볼로 가능한 숫자는 1 ~ 45 입니다.");
         }
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        LottoBall next = (LottoBall) o;
+        return this.ballNumber - next.ballNumber;
     }
 }

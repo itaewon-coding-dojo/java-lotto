@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.LottoBall;
 import lotto.domain.RandomGenerator;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +13,7 @@ public class RandomGeneratorTest {
     void getNumbers() {
         RandomGenerator randomGenerator = RandomGenerator.newGenerator();
 
-        List<Integer> numbers = randomGenerator.getNumbers();
+        List<LottoBall> numbers = randomGenerator.getNumbers();
 
         assertThat(numbers).hasSize(7);
     }

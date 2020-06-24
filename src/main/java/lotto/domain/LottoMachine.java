@@ -17,14 +17,14 @@ public class LottoMachine {
         return this.lottoTickets;
     }
 
-    public void makeTicket(List<Integer> numbers) {
+    public void makeTicket(List<LottoBall> numbers) {
         LottoTicket newTicket = LottoTicket.newLotto(numbers);
         this.lottoTickets.add(newTicket);
     }
 
     public void makeTicketsWithMoney(Money money) {
         for (int i = 0; i < money.get() / 1000; i += 1) {
-            List<Integer> randomNumbers = RandomGenerator.newGenerator().getNumbers();
+            List<LottoBall> randomNumbers = RandomGenerator.newGenerator().getNumbers();
             this.makeTicket(randomNumbers);
         }
     }
