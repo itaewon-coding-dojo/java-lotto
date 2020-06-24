@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.List;
+
 public class LottoBall implements Comparable{
 
     private final int ballNumber;
@@ -13,10 +15,6 @@ public class LottoBall implements Comparable{
         return new LottoBall(number);
     }
 
-    public int get() {
-        return this.ballNumber;
-    }
-
     private void validate(int number) {
         if (number < 1 || number > 45) {
             throw new IllegalArgumentException("보너스 볼로 가능한 숫자는 1 ~ 45 입니다.");
@@ -27,5 +25,13 @@ public class LottoBall implements Comparable{
     public int compareTo(Object o) {
         LottoBall next = (LottoBall) o;
         return this.ballNumber - next.ballNumber;
+    }
+
+    public boolean isElementOf(List<Integer> numbers) {
+        return numbers.contains(this.ballNumber);
+    }
+
+    public void beElementOf(List<Integer> numbers) {
+        numbers.add(this.ballNumber);
     }
 }

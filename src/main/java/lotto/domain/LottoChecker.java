@@ -78,6 +78,6 @@ public class LottoChecker {
     }
 
     private boolean isContainingBonusBall(LottoTicket ticket) {
-        return ticket.getLottoNumbers().contains(this.bonusBall.get());
+        return this.bonusBall.isElementOf(ticket.getLottoNumbers());
     }
 }

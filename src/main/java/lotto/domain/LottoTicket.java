@@ -18,8 +18,9 @@ public class LottoTicket {
     public List<Integer> getLottoNumbers() {
         List<Integer> numbers = new ArrayList<>();
         for (LottoBall ball : this.lottoNumbers) {
-            numbers.add(ball.get());
+            ball.beElementOf(numbers);
         }
+
         return numbers;
     }
 }
