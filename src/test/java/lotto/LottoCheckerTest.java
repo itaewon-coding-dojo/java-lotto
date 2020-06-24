@@ -14,15 +14,15 @@ public class LottoCheckerTest {
     @Test
     void checkTicket() {
         String winningNumbers = "1,2,3,4,5,6";
-        LottoBall lottoBall = LottoBall.newLottoBall(7);
+        LottoBall lottoBall = LottoBall.newBall(7);
         LottoChecker lottoChecker = LottoChecker.newChecker(winningNumbers, lottoBall);
-        LottoTicket ticket = LottoTicket.newLotto(List.of(
-                LottoBall.newLottoBall(1),
-                LottoBall.newLottoBall(2),
-                LottoBall.newLottoBall(3),
-                LottoBall.newLottoBall(4),
-                LottoBall.newLottoBall(11),
-                LottoBall.newLottoBall(12)
+        LottoTicket ticket = LottoTicket.newTicket(List.of(
+                LottoBall.newBall(1),
+                LottoBall.newBall(2),
+                LottoBall.newBall(3),
+                LottoBall.newBall(4),
+                LottoBall.newBall(11),
+                LottoBall.newBall(12)
         ));
 
         int count = lottoChecker.countMatchedNumber(ticket);
@@ -36,45 +36,46 @@ public class LottoCheckerTest {
     @BeforeEach
     void init() {
         lottoMachine = LottoMachine.newMachine();
+
         lottoMachine.makeTicket(List.of(
-                LottoBall.newLottoBall(1),
-                LottoBall.newLottoBall(2),
-                LottoBall.newLottoBall(3),
-                LottoBall.newLottoBall(11),
-                LottoBall.newLottoBall(12),
-                LottoBall.newLottoBall(13),
-                LottoBall.newLottoBall(14)
+                LottoBall.newBall(1),
+                LottoBall.newBall(2),
+                LottoBall.newBall(3),
+                LottoBall.newBall(11),
+                LottoBall.newBall(12),
+                LottoBall.newBall(13),
+                LottoBall.newBall(14)
         ));
         lottoMachine.makeTicket(List.of(
-                LottoBall.newLottoBall(1),
-                LottoBall.newLottoBall(2),
-                LottoBall.newLottoBall(11),
-                LottoBall.newLottoBall(12),
-                LottoBall.newLottoBall(13),
-                LottoBall.newLottoBall(14),
-                LottoBall.newLottoBall(15)
+                LottoBall.newBall(1),
+                LottoBall.newBall(2),
+                LottoBall.newBall(11),
+                LottoBall.newBall(12),
+                LottoBall.newBall(13),
+                LottoBall.newBall(14),
+                LottoBall.newBall(15)
         ));
         lottoMachine.makeTicket(List.of(
-                LottoBall.newLottoBall(11),
-                LottoBall.newLottoBall(12),
-                LottoBall.newLottoBall(13),
-                LottoBall.newLottoBall(14),
-                LottoBall.newLottoBall(15),
-                LottoBall.newLottoBall(16),
-                LottoBall.newLottoBall(17)
+                LottoBall.newBall(11),
+                LottoBall.newBall(12),
+                LottoBall.newBall(13),
+                LottoBall.newBall(14),
+                LottoBall.newBall(15),
+                LottoBall.newBall(16),
+                LottoBall.newBall(17)
         ));
         lottoMachine.makeTicket(List.of(
-                LottoBall.newLottoBall(1),
-                LottoBall.newLottoBall(2),
-                LottoBall.newLottoBall(3),
-                LottoBall.newLottoBall(4),
-                LottoBall.newLottoBall(5),
-                LottoBall.newLottoBall(7),
-                LottoBall.newLottoBall(16)
+                LottoBall.newBall(1),
+                LottoBall.newBall(2),
+                LottoBall.newBall(3),
+                LottoBall.newBall(4),
+                LottoBall.newBall(5),
+                LottoBall.newBall(7),
+                LottoBall.newBall(16)
         ));
 
         String winningNumbers = "1,2,3,4,5,6";
-        LottoBall lottoBall = LottoBall.newLottoBall(7);
+        LottoBall lottoBall = LottoBall.newBall(7);
         lottoChecker = LottoChecker.newChecker(winningNumbers, lottoBall);
     }
 

@@ -13,16 +13,16 @@ public class LottoTicketTest {
     @Test
     void getLottoNumbers() {
         List<LottoBall> numbers = new ArrayList<>(List.of(
-                LottoBall.newLottoBall(1),
-                LottoBall.newLottoBall(2),
-                LottoBall.newLottoBall(3),
-                LottoBall.newLottoBall(4),
-                LottoBall.newLottoBall(5),
-                LottoBall.newLottoBall(6),
-                LottoBall.newLottoBall(7)
+                LottoBall.newBall(1),
+                LottoBall.newBall(2),
+                LottoBall.newBall(3),
+                LottoBall.newBall(4),
+                LottoBall.newBall(5),
+                LottoBall.newBall(6),
+                LottoBall.newBall(7)
         ));
 
-        LottoTicket lottoTicket = LottoTicket.newLotto(numbers);
+        LottoTicket lottoTicket = LottoTicket.newTicket(numbers);
 
         assertThat(lottoTicket.getLottoNumbers()).isEqualTo(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6, 7)));
     }

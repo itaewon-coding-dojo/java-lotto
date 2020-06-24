@@ -13,7 +13,7 @@ public class LottoBallTest {
     @Test
     @DisplayName("with valid bonusBall")
     void validBonusBall() {
-        LottoBall lottoBall = LottoBall.newLottoBall(21);
+        LottoBall lottoBall = LottoBall.newBall(21);
 
         assertThat(lottoBall.get()).isEqualTo(21);
     }
@@ -23,7 +23,7 @@ public class LottoBallTest {
     @DisplayName("with invalid bonusBall")
     void invalidBonusBall(int number) {
         assertThatThrownBy(() -> {
-            LottoBall lottoBall = LottoBall.newLottoBall(number);
+            LottoBall lottoBall = LottoBall.newBall(number);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }

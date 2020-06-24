@@ -11,7 +11,7 @@ public class LottoTicket {
         this.lottoNumbers = numbers;
     }
 
-    public static LottoTicket newLotto(List<LottoBall> numbers) {
+    public static LottoTicket newTicket(List<LottoBall> numbers) {
         return new LottoTicket(numbers);
     }
 

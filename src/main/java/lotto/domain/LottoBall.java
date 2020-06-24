@@ -9,7 +9,7 @@ public class LottoBall implements Comparable{
         this.ballNumber = number;
     }
 
-    public static LottoBall newLottoBall(int number) {
+    public static LottoBall newBall(int number) {
         return new LottoBall(number);
     }
 

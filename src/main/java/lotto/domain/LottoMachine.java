@@ -18,7 +18,7 @@ public class LottoMachine {
     }
 
     public void makeTicket(List<LottoBall> numbers) {
-        LottoTicket newTicket = LottoTicket.newLotto(numbers);
+        LottoTicket newTicket = LottoTicket.newTicket(numbers);
         this.lottoTickets.add(newTicket);
     }
 

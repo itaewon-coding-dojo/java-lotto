@@ -11,7 +11,7 @@ public class RandomGenerator {
     public RandomGenerator() {
         this.numbers = new ArrayList<>();
         for (int i = 1; i <= 45; i += 1) {
-            numbers.add(LottoBall.newLottoBall(i));
+            numbers.add(LottoBall.newBall(i));
         }
     }
 
