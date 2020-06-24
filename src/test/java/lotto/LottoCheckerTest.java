@@ -35,7 +35,7 @@ public class LottoCheckerTest {
 
     @BeforeEach
     void init() {
-        lottoMachine = LottoMachine.newMachine(0);
+        lottoMachine = LottoMachine.newMachine();
 
         lottoMachine.makeTicket(List.of(
                 LottoBall.newBall(1),

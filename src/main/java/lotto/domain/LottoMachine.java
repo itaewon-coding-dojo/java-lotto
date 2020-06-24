@@ -9,14 +9,11 @@ import java.util.List;
 public class LottoMachine {
 
     private final List<LottoTicket> lottoTickets = new ArrayList<>();
-    private final int manualLottoCount;
 
-    public LottoMachine(int number) {
-        this.manualLottoCount = number;
-    }
+    public LottoMachine() {}
 
-    public static LottoMachine newMachine(int number) {
-        return new LottoMachine(number);
+    public static LottoMachine newMachine() {
+        return new LottoMachine();
     }
 
     public List<LottoTicket> getTickets() {
@@ -28,21 +25,22 @@ public class LottoMachine {
         this.lottoTickets.add(newTicket);
     }
 
-    public void makeTicketsWithMoney(Money money) {
-        makeAutoLottos(money);
-        makeManualLottos();
+    public void makeTickets(Money money, int manualLottoCount) {
+        int autoLottoCount = (money.get() / 1000) - manualLottoCount;
+
+        makeAutoLottos(autoLottoCount);
+        makeManualLottos(manualLottoCount);
     }
 
-    private void makeAutoLottos(Money money) {
-        int autoLottoCount = (money.get() / 1000) - this.manualLottoCount;
+    private void makeAutoLottos(int autoLottoCount) {
         for (int i = 0; i < autoLottoCount; i += 1) {
             List<LottoBall> randomNumbers = RandomGenerator.newGenerator().getNumbers();
             this.makeTicket(randomNumbers);
         }
     }
 
-    private void makeManualLottos() {
-        for (int i = 0; i < this.manualLottoCount; i += 1) {
+    private void makeManualLottos(int manualLottoCount) {
+        for (int i = 0; i < manualLottoCount; i += 1) {
             String numbers = Input.getManualLottoNumber();
             List<LottoBall> lottoNumbers = convertToList(numbers);
             this.makeTicket(lottoNumbers);

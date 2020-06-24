@@ -14,8 +14,8 @@ public class LottoApplication {
             money = Money.newMoney(1000);
         }
 
-        LottoMachine lottoMachine = LottoMachine.newMachine(Input.getUserInputManualCount());
-        lottoMachine.makeTicketsWithMoney(money);
+        LottoMachine lottoMachine = LottoMachine.newMachine();
+        lottoMachine.makeTickets(money, Input.getUserInputManualCount());
 
         Output.showLottoTickets(lottoMachine);
 
