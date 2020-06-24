@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class LottoTicket {
@@ -15,15 +14,6 @@ public class LottoTicket {
         return new LottoTicket(numbers);
     }
 
-    public List<Integer> getLottoNumbers() {
-        List<Integer> numbers = new ArrayList<>();
-        for (LottoBall ball : this.lottoNumbers) {
-            ball.beElementOf(numbers);
-        }
-
-        return numbers;
-    }
-
     public int countMatchedNumber(List<Integer> winningNumbers) {
         int count = 0;
         for (Integer number : winningNumbers) {
@@ -35,9 +25,15 @@ public class LottoTicket {
 
     private int plusCount(List<LottoBall> ticketNumbers, int count, Integer number) {
         for (LottoBall ball : ticketNumbers) {
-            if (ball.isSameWith(number)) {
-                count += 1;
-            }
+            count = addCount(count, number, ball);
+        }
+
+        return count;
+    }
+
+    private int addCount(int count, Integer number, LottoBall ball) {
+        if (ball.isSameWith(number)) {
+            count += 1;
         }
 
         return count;
@@ -45,5 +41,15 @@ public class LottoTicket {
 
     public boolean isContaining(LottoBall ball) {
         return this.lottoNumbers.contains(ball);
+    }
+
+    @Override
+    public String toString() {
+        String result = "";
+        for (LottoBall ball : this.lottoNumbers) {
+            result += ball.toString() + " ";
+        }
+
+        return "[ " + result + "]";
     }
 }

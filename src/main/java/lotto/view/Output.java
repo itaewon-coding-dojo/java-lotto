@@ -11,7 +11,7 @@ public class Output {
     public static void showLottoTickets(LottoMachine lottoMachine) {
         System.out.println("");
         List<LottoTicket> tickets = lottoMachine.getTickets();
-        tickets.forEach(ticket -> System.out.println(ticket.getLottoNumbers()));
+        tickets.forEach(ticket -> System.out.println(ticket.toString()));
     }
 
     public enum ShowWinner {

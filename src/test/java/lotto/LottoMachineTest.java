@@ -5,6 +5,8 @@ import lotto.domain.LottoMachine;
 import lotto.domain.LottoTicket;
 import lotto.domain.Money;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +14,21 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class LottoMachineTest {
-    @Test
-    void makeLottoTicket() {
+    @ParameterizedTest
+    @CsvSource(value = {
+            "1,true",
+            "3,true",
+            "5,true",
+            "7,true",
+            "9,true",
+            "11,true",
+            "13,true",
+            "14,false",
+            "15,false",
+    })
+    void makeLottoTicket(int number, boolean bool) {
         LottoMachine lottoMachine = LottoMachine.newMachine();
-        List<LottoBall> numbers1 = new ArrayList<>(List.of(
+        List<LottoBall> numbers = new ArrayList<>(List.of(
                 LottoBall.newBall(1),
                 LottoBall.newBall(3),
                 LottoBall.newBall(5),
@@ -24,23 +37,12 @@ public class LottoMachineTest {
                 LottoBall.newBall(11),
                 LottoBall.newBall(13)
         ));
-        List<LottoBall> numbers2 = new ArrayList<>(List.of(
-                LottoBall.newBall(2),
-                LottoBall.newBall(4),
-                LottoBall.newBall(6),
-                LottoBall.newBall(8),
-                LottoBall.newBall(10),
-                LottoBall.newBall(12),
-                LottoBall.newBall(14)
-        ));
-        lottoMachine.makeTicket(numbers1);
-        lottoMachine.makeTicket(numbers2);
 
-        LottoTicket firstTicket = lottoMachine.getTickets().get(0);
-        assertThat(firstTicket.getLottoNumbers()).isEqualTo(new ArrayList<>(List.of(1, 3, 5, 7, 9, 11, 13)));
+        lottoMachine.makeTicket(numbers);
 
-        LottoTicket secondTicket = lottoMachine.getTickets().get(1);
-        assertThat(secondTicket.getLottoNumbers()).isEqualTo(new ArrayList<>(List.of(2, 4, 6, 8, 10, 12, 14)));
+        LottoTicket ticket = lottoMachine.getTickets().get(0);
+        LottoBall ball = LottoBall.newBall(number);
+        assertThat(ticket.isContaining(ball)).isEqualTo(bool);
     }
 
     @Test

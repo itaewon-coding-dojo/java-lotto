@@ -37,11 +37,12 @@ public class LottoBall implements Comparable{
         return numbers.contains(this.ballNumber);
     }
 
-    public void beElementOf(List<Integer> numbers) {
-        numbers.add(this.ballNumber);
-    }
-
     public boolean isSameWith(int number) {
         return number == this.ballNumber;
+    }
+
+    @Override
+    public String toString() {
+        return this.ballNumber + "";
     }
 }

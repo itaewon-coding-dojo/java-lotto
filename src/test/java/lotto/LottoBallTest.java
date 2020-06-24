@@ -29,14 +29,4 @@ public class LottoBallTest {
 
         assertThat(lottoBall.isElementOf(numbers)).isTrue();
     }
-
-    @Test
-    void beElementOf() {
-        LottoBall lottoBall = LottoBall.newBall(3);
-        List<Integer> numbers = new ArrayList<>(List.of(1, 2));
-
-        lottoBall.beElementOf(numbers);
-
-        assertThat(numbers).contains(3);
-    }
 }
