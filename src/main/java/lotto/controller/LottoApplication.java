@@ -6,7 +6,13 @@ import lotto.view.Output;
 
 public class LottoApplication {
     public static void main(String[] args) {
-        Money money = Money.newMoney(Input.getUserInputMoney());
+        Money money;
+        try {
+            money = Money.newMoney(Input.getUserInputMoney());
+        } catch (IllegalArgumentException e) {
+            Output.showErrorMessage(e);
+            money = Money.newMoney(1000);
+        }
 
         LottoMachine lottoMachine = LottoMachine.newMachine();
         lottoMachine.makeTicketsWithMoney(money);
@@ -14,7 +20,13 @@ public class LottoApplication {
         Output.showLottoTickets(lottoMachine);
 
         String winningNumbers = Input.getWinningNumbers();
-        LottoBall lottoBallNumber = LottoBall.newBall(Input.getBonusBallNumber());
+        LottoBall lottoBallNumber;
+        try {
+            lottoBallNumber = LottoBall.newBall(Input.getBonusBallNumber());
+        } catch (IllegalArgumentException e) {
+            Output.showErrorMessage(e);
+            lottoBallNumber = LottoBall.newBall(45);
+        }
 
         LottoChecker lottoChecker = LottoChecker.newChecker(winningNumbers, lottoBallNumber);
         CheckCounter counter = lottoChecker.checkAllTickets(lottoMachine);
