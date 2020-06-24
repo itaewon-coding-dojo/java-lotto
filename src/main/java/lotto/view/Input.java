@@ -13,6 +13,20 @@ public class Input {
         return money;
     }
 
+    public static int getUserInputManualCount() {
+        System.out.println("수동으로 구매할 로또의 수를 입력해주세요");
+        Scanner scanner = new Scanner(System.in);
+
+        return scanner.nextInt();
+    }
+
+    public static String getManualLottoNumber() {
+        System.out.println("수동으로 구매할 로또의 번호를 입력해주세요");
+        Scanner scanner = new Scanner(System.in);
+
+        return scanner.nextLine();
+    }
+
     public static String getWinningNumbers() {
         System.out.println("당첨 번호를 입력해주세요.");
         Scanner scanner = new Scanner(System.in);

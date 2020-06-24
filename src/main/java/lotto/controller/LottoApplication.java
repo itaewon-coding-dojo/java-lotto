@@ -14,12 +14,13 @@ public class LottoApplication {
             money = Money.newMoney(1000);
         }
 
-        LottoMachine lottoMachine = LottoMachine.newMachine();
+        LottoMachine lottoMachine = LottoMachine.newMachine(Input.getUserInputManualCount());
         lottoMachine.makeTicketsWithMoney(money);
 
         Output.showLottoTickets(lottoMachine);
 
         String winningNumbers = Input.getWinningNumbers();
+
         LottoBall lottoBallNumber;
         try {
             lottoBallNumber = LottoBall.newBall(Input.getBonusBallNumber());

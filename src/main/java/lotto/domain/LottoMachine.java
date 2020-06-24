@@ -1,16 +1,22 @@
 package lotto.domain;
 
+import lotto.view.Input;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LottoMachine {
 
     private final List<LottoTicket> lottoTickets = new ArrayList<>();
+    private final int manualLottoCount;
 
-    public LottoMachine() {}
+    public LottoMachine(int number) {
+        this.manualLottoCount = number;
+    }
 
-    public static LottoMachine newMachine() {
-        return new LottoMachine();
+    public static LottoMachine newMachine(int number) {
+        return new LottoMachine(number);
     }
 
     public List<LottoTicket> getTickets() {
@@ -23,9 +29,32 @@ public class LottoMachine {
     }
 
     public void makeTicketsWithMoney(Money money) {
-        for (int i = 0; i < money.get() / 1000; i += 1) {
+        makeAutoLottos(money);
+        makeManualLottos();
+    }
+
+    private void makeAutoLottos(Money money) {
+        int autoLottoCount = (money.get() / 1000) - this.manualLottoCount;
+        for (int i = 0; i < autoLottoCount; i += 1) {
             List<LottoBall> randomNumbers = RandomGenerator.newGenerator().getNumbers();
             this.makeTicket(randomNumbers);
         }
+    }
+
+    private void makeManualLottos() {
+        for (int i = 0; i < this.manualLottoCount; i += 1) {
+            String numbers = Input.getManualLottoNumber();
+            List<LottoBall> lottoNumbers = convertToList(numbers);
+            this.makeTicket(lottoNumbers);
+        }
+    }
+
+    private List<LottoBall> convertToList(String string) {
+        return Arrays.asList(
+                Arrays.stream(string.split(","))
+                        .map(Integer::parseInt)
+                        .map(LottoBall::newBall)
+                        .toArray(LottoBall[]::new)
+        );
     }
 }

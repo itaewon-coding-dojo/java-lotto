@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class LottoMachineTest {
     @Test
     void makeLottoTicket() {
-        LottoMachine lottoMachine = LottoMachine.newMachine();
+        LottoMachine lottoMachine = LottoMachine.newMachine(0);
         List<LottoBall> numbers1 = new ArrayList<>(List.of(
                 LottoBall.newBall(1),
                 LottoBall.newBall(3),
@@ -46,7 +46,7 @@ public class LottoMachineTest {
     @Test
     void makeLottoTicketsWithMoney() {
         Money money = Money.newMoney(14_000);
-        LottoMachine lottoMachine = LottoMachine.newMachine();
+        LottoMachine lottoMachine = LottoMachine.newMachine(0);
         lottoMachine.makeTicketsWithMoney(money);
 
         assertThat(lottoMachine.getTickets()).hasSize(14);
