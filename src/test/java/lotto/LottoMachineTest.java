@@ -44,10 +44,11 @@ public class LottoMachineTest {
     }
 
     @Test
-    void makeLottoTicketsWithMoney() {
+    void makeTickets() {
         Money money = Money.newMoney(14_000);
         LottoMachine lottoMachine = LottoMachine.newMachine();
-        lottoMachine.makeTickets(money, 0);
+        List<LottoTicket> empty = new ArrayList<>();
+        lottoMachine.makeTickets(money, empty);
 
         assertThat(lottoMachine.getTickets()).hasSize(14);
     }

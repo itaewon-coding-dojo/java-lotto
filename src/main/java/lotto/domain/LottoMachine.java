@@ -1,9 +1,6 @@
 package lotto.domain;
 
-import lotto.view.Input;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class LottoMachine {
@@ -25,11 +22,12 @@ public class LottoMachine {
         this.lottoTickets.add(newTicket);
     }
 
-    public void makeTickets(Money money, int manualLottoCount) {
+    public void makeTickets(Money money, List<LottoTicket> manualTickets) {
+        int manualLottoCount = manualTickets.size();
         int autoLottoCount = (money.get() / 1000) - manualLottoCount;
 
         makeAutoLottos(autoLottoCount);
-        makeManualLottos(manualLottoCount);
+        makeManualLottos(manualTickets);
     }
 
     private void makeAutoLottos(int autoLottoCount) {
@@ -39,20 +37,7 @@ public class LottoMachine {
         }
     }
 
-    private void makeManualLottos(int manualLottoCount) {
-        for (int i = 0; i < manualLottoCount; i += 1) {
-            String numbers = Input.getManualLottoNumber();
-            List<LottoBall> lottoNumbers = convertToList(numbers);
-            this.makeTicket(lottoNumbers);
-        }
-    }
-
-    private List<LottoBall> convertToList(String string) {
-        return Arrays.asList(
-                Arrays.stream(string.split(","))
-                        .map(Integer::parseInt)
-                        .map(LottoBall::newBall)
-                        .toArray(LottoBall[]::new)
-        );
+    private void makeManualLottos(List<LottoTicket> manualTickets) {
+        this.lottoTickets.addAll(manualTickets);
     }
 }

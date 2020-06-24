@@ -4,6 +4,8 @@ import lotto.domain.*;
 import lotto.view.Input;
 import lotto.view.Output;
 
+import java.util.List;
+
 public class LottoApplication {
     public static void main(String[] args) {
         Money money;
@@ -14,8 +16,11 @@ public class LottoApplication {
             money = Money.newMoney(1000);
         }
 
+        ManualLottoTicketWriter manualWriter = ManualLottoTicketWriter.newWriter();
+        List<LottoTicket> manualTickets = manualWriter.write(Input.getUserInputManualCount());
+
         LottoMachine lottoMachine = LottoMachine.newMachine();
-        lottoMachine.makeTickets(money, Input.getUserInputManualCount());
+        lottoMachine.makeTickets(money, manualTickets);
 
         Output.showLottoTickets(lottoMachine);
 
